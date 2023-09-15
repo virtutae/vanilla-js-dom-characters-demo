@@ -5,3 +5,11 @@ html {
 .big {
     font-size: 4rem;
 }
+body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+li {
+    margin: 1rem;
+}

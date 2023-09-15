@@ -1,30 +1,36 @@
-import { getElementByIdOrFail } from "./utils.js"
-import { characters } from "./characters.js"
-import { antiHeroes } from "./antiheroes.js"
+//Modern browsers support ES5 modules with import/export as normal
+import { getElementByIdOrFail } from "./utils.js";
+import { characters } from "./characters.js";
+// import { antiHeroes } from "./antiheroes.js";
 
-const myButton = getElementByIdOrFail("myButton1")
-const myPara = getElementByIdOrFail("myPara1")
-const myList = getElementByIdOrFail("myList1")
-
-
-const characterElems = characters.map(ch => {
-    const el = document.createElement("li");
-    el.addEventListener("click", () => { alert(ch.powers.join(", ")) })
-    el.addEventListener("mouseover", () => {
-
-        myPara.innerText = ch.name + ": " + ch.powers.join(", ")
-    })
-    el.innerHTML = ch.name + " from " + ch.book;
-    return el;
-});
-
-
-characterElems.forEach(li => myList.appendChild(li))
-
+const myButton = getElementByIdOrFail("myButton1");
+const focusedCharacterPara = getElementByIdOrFail("focusedCharacterPara");
+const myList = getElementByIdOrFail("charactersUL");
 
 myButton.addEventListener("click", () => {
-    const answer = prompt("input any number");
-    // alert("You said: " + answer)
-    myPara.outerHTML = "You said: " + answer
-})
+    const searchTerm = prompt("input search term");
+    focusedCharacterPara.outerHTML = "You said: " + searchTerm;
+});
 
+function makeLiElementsForCharacters() {
+    return characters.map((character) => {
+        //Not yet attached to any point in the DOM tree
+        const element = document.createElement("li");
+        element.innerHTML = character.name + " from " + character.book;
+
+        element.addEventListener("click", () => {
+            alert(character.powers.join(", "));
+        });
+        element.addEventListener("mouseover", () => {
+            focusedCharacterPara.innerText =
+                character.name + ": " + character.powers.join(", ");
+        });
+
+        return element;
+    });
+}
+const characterLiElements = makeLiElementsForCharacters();
+
+for (const li of characterLiElements) {
+    myList.appendChild(li);
+}
