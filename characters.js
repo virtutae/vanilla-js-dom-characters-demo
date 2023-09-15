@@ -20,6 +20,11 @@ export const characters = [
         powers: ["Vampirism", "Shapeshifting", "Immortality"],
     },
     {
+        name: "Hermione Granger",
+        book: "Harry Potter series",
+        powers: ["Quick thinking", "Spellcasting", "Time-travel (Time-Turner)"],
+    },
+    {
         name: "Circe",
         book: "The Odyssey",
         powers: ["Magic spells", "Transformation", "Enchantments"],
@@ -37,7 +42,7 @@ export const characters = [
     {
         name: "Lyra Belacqua",
         book: "His Dark Materials series",
-        powers: ["Reading the Alethiometer", "Bravery", "Determination"],
+        powers: ["Bravery", "Determination", "Reading the Alethiometer"],
     },
 
     {
@@ -54,10 +59,5 @@ export const characters = [
         name: "Vin",
         book: "Mistborn series",
         powers: ["Allomancy", "Steelpushing", "Ironpulling"],
-    },
-    {
-        name: "Hermione Granger",
-        book: "Harry Potter series",
-        powers: ["Spellcasting", "Time-travel (Time-Turner)", "Quick thinking"],
     },
 ];
